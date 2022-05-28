@@ -36,13 +36,13 @@ const Input: React.FC<{
         value={value}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        placeholder="Un mot?"
+        placeholder="你的猜测（单个汉字）？"
       />
       <input
         type="submit"
         disabled={disabled}
         onClick={handleSubmit}
-        value="Valider"
+        value="提交"
       />
     </div>
   );

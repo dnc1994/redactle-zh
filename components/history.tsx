@@ -12,8 +12,8 @@ const HistoryContainer: React.FC<{
         <thead>
           <tr>
             <th>&nbsp;</th>
-            <th>Essai</th>
-            <th>Occurrences</th>
+            <th>汉字</th>
+            <th>出现次数</th>
           </tr>
         </thead>
         <tbody>

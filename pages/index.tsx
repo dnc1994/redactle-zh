@@ -30,9 +30,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Caviardeul - Déchiffrez l&apos;article du jour</title>
-        <meta name="description" content="Un jeu de réflexion quotidien" />
-        <meta name="author" content="@julienc91" />
+        <title>Redactle 中文版</title>
+        <meta name="description" content="基于维基百科的解谜游戏" />
+        <meta name="author" content="Linghao Zhang" />
 
         <link rel="icon" href="/favicon.ico" />
       </Head>

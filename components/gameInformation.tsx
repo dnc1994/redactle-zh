@@ -20,7 +20,7 @@ const GameInformation: React.FC<{
       (nbTrials > 1 ? "s" : "") +
       " !"
   )}&url=${encodeURIComponent(
-    "https://caviardeul.julienc.io/"
+    "https://redactle-zh.vercel.app/"
   )}&hashtags=caviardeul`;
   return (
     <div className="game-information">

@@ -8,17 +8,17 @@ const Navbar: React.FC<{
 }> = ({ onShowInfoModal, onShowScoreModal }) => {
   return (
     <nav>
-      <h1>Caviardeul</h1>
+      <h1>Redactle 中文版</h1>
       <ul>
         <li className="left" onClick={onShowInfoModal}>
-          À propos
+          简介
         </li>
         <li className="left" onClick={onShowScoreModal}>
-          Scores
+          得分
         </li>
         <li className="divider" />
         <li>
-          <ExternalLink href="https://github.com/julienc91/caviardeul">
+          <ExternalLink href="https://github.com/dnc1994/redactle-zh">
             <Image height={30} width={30} src="/github.png" alt="GitHub" />
           </ExternalLink>
         </li>

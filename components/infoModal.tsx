@@ -32,7 +32,7 @@ const InfoModal: React.FC<{ open: boolean; onClose: () => void }> = ({
         Caviardeul n&apos;utilise aucune donnée personnelle. Ce jeu est proposé
         gratuitement et sans aucune publicité. Son code source est disponible
         sur{" "}
-        <ExternalLink href="https://github.com/julienc91/caviardeul">
+        <ExternalLink href="https://github.com/dnc1994/redactle-zh">
           GitHub
         </ExternalLink>
         . Il est hébergé par{" "}
@@ -41,7 +41,7 @@ const InfoModal: React.FC<{ open: boolean; onClose: () => void }> = ({
       <h2>Contact</h2>
       <p>
         Un bug à signaler ou une suggestion à faire&nbsp;? Utilisez{" "}
-        <ExternalLink href="https://github.com/julienc91/caviardeul/issues">
+        <ExternalLink href="https://github.com/dnc1994/redactle-zh/issues">
           l&apos;espace <i>Issues</i> du dépôt GitHub
         </ExternalLink>
         .
