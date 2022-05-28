@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { commonWords, isWord, splitWords } from "../utils/caviarding";
+import { commonWords, isWord, isChineseWord, splitWords } from "../utils/caviarding";
 import { GameContext } from "../utils/game";
 
 const _WordContainer: React.FC<{ node: any }> = ({ node }) => {
@@ -9,6 +9,7 @@ const _WordContainer: React.FC<{ node: any }> = ({ node }) => {
   return (
     <GameContext.Consumer>
       {({ words, selection }) => {
+        // console.log("word = " + word);
         const lowercaseWord = word.toLocaleLowerCase();
         const revealed = words.has(lowercaseWord);
         const selected = selection && selection[0] === lowercaseWord;
@@ -54,6 +55,10 @@ const ArticleContainer: React.FC<{
                 currentValue = `**${word}**`;
               } else {
                 currentValue = word;
+              }
+              // TODO: Better solutions than adding spaces? Might be the best compromise if using ReactMarkdown though
+              if (isChineseWord(word)) {
+                currentValue = ' ' + currentValue + ' ';
               }
               return value + currentValue;
             })}

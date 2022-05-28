@@ -19,7 +19,7 @@ export const getArticle = async (
   pageName: string
 ): Promise<Article> => {
   const wikipediaResponse = await fetch(
-    `https://fr.wikipedia.org/w/api.php?action=parse&format=json&page=${pageName}&prop=text&formatversion=2&origin=*`
+    `https://zh.wikipedia.org/w/api.php?action=parse&format=json&page=${pageName}&prop=text&formatversion=2&origin=*`
   );
   const content = await wikipediaResponse.json();
   const title = content.parse.title;
@@ -38,12 +38,13 @@ export const getCurrentArticlePageId = (): [string, number] => {
   const now = new Date();
   const diff = now.getTime() - firstGameDate.getTime();
   const diffInDays = Math.floor(diff / (1000 * 3600 * 24));
-  const encryptionKey = process.env.ENCRYPTION_KEY;
-  if (!encryptionKey) {
-    throw Error("Missing encryption key");
-  }
+  // const encryptionKey = process.env.ENCRYPTION_KEY;
+  // if (!encryptionKey) {
+  //   throw Error("Missing encryption key");
+  // }
   return [
-    decode(encodedPageList[diffInDays % encodedPageList.length], encryptionKey),
+    encodedPageList[diffInDays % encodedPageList.length],
+    // decode(encodedPageList[diffInDays % encodedPageList.length], encryptionKey),
     diffInDays + 1,
   ];
 };

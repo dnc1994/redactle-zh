@@ -1,73 +1,42 @@
+// TODO: Tweak common words
 export const commonWords = new Set<string>([
-  "a",
-  "à",
-  "ainsi",
-  "alors",
-  "après",
-  "autour",
-  "avant",
-  "avec",
-  "au",
-  "aux",
-  "c",
-  "ça",
-  "car",
-  "ce",
-  "ces",
-  "comme",
-  "contre",
-  "d",
-  "dans",
-  "de",
-  "depuis",
-  "des",
-  "donc",
-  "du",
-  "en",
-  "entre",
-  "est",
-  "et",
-  "jusqu",
-  "l",
-  "la",
-  "le",
-  "les",
-  "mais",
-  "n",
-  "ne",
-  "non",
-  "ou",
-  "où",
-  "par",
-  "pas",
-  "pendant",
-  "plus",
-  "pour",
-  "qu",
-  "que",
-  "qui",
-  "s",
-  "se",
-  "si",
-  "sur",
-  "un",
-  "une",
-  "vers",
-  "y",
+  "的",
+  "是",
+  "和",
 ]);
 
-const punctuationList = "{}()\\[\\]\\\\.,;:!¡?¿/@#%\\^&*_~+\\-=<>«»\"'\\s";
+const punctuationList = "：，。！？、“”（）【】《》·{}()\\[\\]\\\\.,;:!¡?¿/@#%\\^&*_~+\\-=<>«»\"'\\s";
 const wordRegex = new RegExp(`^[^${punctuationList}]+$`, "i");
 const separatorRegex = new RegExp(`([${punctuationList}]+)`, "gim");
+// TODO: This doesn't include all Han Ideographs
+const ChineseRegex = new RegExp('[\u4E00-\u9FFF]+', "i");
 
 export const splitWords = (text: string): string[] => {
-  return text.split(separatorRegex);
+  const preSplitText = text.split(separatorRegex);
+  const finalSplitText: string[] = [];
+  for (let word of preSplitText) {
+    if (isChineseWord(word)) {
+      // TODO: Spliting by "" might be problematic for certain unicode characters?
+      for (let character of (word.split(""))) {
+        finalSplitText.push(character);
+      }
+    } else {
+      finalSplitText.push(word);
+    }
+  }
+
+  return finalSplitText;
 };
+
+export const isChineseWord = (word: string): boolean => {
+  return !!word.match(ChineseRegex);
+}
 
 export const isWord = (word: string): boolean => {
-  return !!word.match(wordRegex);
+  return !!word.match(wordRegex) || isChineseWord(word);
 };
 
+// TODO: This doesn't work at all for now
 export const countOccurrences = (text: string, word: string): number => {
   const regex = new RegExp(
     `\([${punctuationList}]|^)(${word.toLocaleLowerCase()})([${punctuationList}]|$)`,

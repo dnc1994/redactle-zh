@@ -29,12 +29,50 @@ const elementsToRemove = [
   ".wikitable",
   "style",
   "sup.reference",
+  // From source code of the original game
+  "[rel='mw-deduplicated-inline-style']",
+  "[title='Name at birth']",
+  "[aria-labelledby='micro-periodic-table-title']",
+  ".barbox",
+  ".clade",
+  ".Expand_section",
+  ".nowrap",
+  ".IPA",
+  ".mw-empty-elt",
+  ".mw-editsection",
+  ".nounderlines",
+  ".nomobile",
+  ".searchaux",
+  ".sidebar",
+  ".sistersitebox",
+  ".noexcerpt",
+  ".haudio",
+  ".portalbox",
+  ".mw-references-wrap",
+  ".unsolved",
+  ".navbox",
+  ".refbegin",
+  ".reflist",
+  ".collapsible",
+  ".uncollapsed",
+  ".mw-collapsible",
+  ".mw-made-collapsible",
+  ".mbox-small",
+  ".mbox",
+  ".succession-box",
+  ".mwe-math-element",
+  ".cs1-ws-icon",
+  // Chinese version of element IDs
+  "#相关条目",
+  "#注释",
+  "#参考文献",
+  "#外部链接",
 ];
 const elementsToStripAfter = [
-  "h2 #Voir_aussi",
-  "h2 #Notes_et_références",
-  "h2 #Notes",
-  "h2 #Références",
+  "h2 #相关条目",
+  "h2 #注释",
+  "h2 #参考文献",
+  "h2 #外部链接",
 ];
 const elementsToFlatten = ["a", "abbr", "b", "i", "span", "sup", "time"];
 
@@ -49,6 +87,7 @@ export const stripArticle = (rawContent: string): string => {
     element.remove();
   });
 
+  // TODO: This doesn't seem to work, at least not for 注释 / 相关条目 / 外部链接
   elementsToStripAfter.forEach((selector) => {
     const element = content?.querySelector(selector)?.parentNode;
     while (element?.nextElementSibling) {
@@ -65,6 +104,6 @@ export const stripArticle = (rawContent: string): string => {
     element.replaceWith(element.innerHTML);
   });
 
-  content?.querySelector("#Voir_aussi")?.closest("h2")?.remove();
+  content?.querySelector("#相关条目")?.closest("h2")?.remove();
   return (content || "").toString();
 };
