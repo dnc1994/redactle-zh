@@ -1,6 +1,6 @@
 import { encode } from "./encryption";
 
-export const firstGameDate = new Date(2022, 4, 27);
+export const firstGameDate = new Date(2022, 5, 5);
 const clearTextPageList: string[] = [];
 
 const shuffle = <T>(array: T[]): void => {
@@ -26,4 +26,14 @@ const getEncodePageList = (): string[] => {
 
 export const encodedPageList = [
   "江泽民",
+  "鲁迅",
+  "日本历史",
+  "赫尔辛基",
+  "死海古卷",
+  "邪教",
+  "咖哩",
+  "老友记",
+  "螃蟹",
+  "薛定谔猫",
+  "现代汽车",
 ];
