@@ -5,7 +5,7 @@ export const commonWords = new Set<string>([
   "和",
 ]);
 
-const punctuationList = "：，。！？、“”（）【】《》·{}()\\[\\]\\\\.,;:!¡?¿/@#%\\^&*_~+\\-=<>«»\"'\\s";
+const punctuationList = "：，。！？、；“”（）【】《》·{}()\\[\\]\\\\.,;:!¡?¿/@#%\\^&*_~+\\-=<>«»\"'\\s";
 const wordRegex = new RegExp(`^[^${punctuationList}]+$`, "i");
 const separatorRegex = new RegExp(`([${punctuationList}]+)`, "gim");
 // TODO: This doesn't include all Han Ideographs
